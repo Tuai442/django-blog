@@ -1,0 +1,20 @@
+{% load static %}
+
+<header class="header header--loggedIn">
+    <h1>WhatToEat</h1>
+    <nav class="nav-bar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/add_recipe" class="nav-link">Add Recipi</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+
+        {% if user.is_authenticated %}
+        <a href="/logout" class="login">Logout</a>
+        {% else %}
+            <a href="/login" class="login">Login</a>
+        {% endif %}
+    </nav>
+  
+</header>

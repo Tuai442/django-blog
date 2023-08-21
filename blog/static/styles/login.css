@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.login-container {
+    position: relative;
+    background-color: #F04A46;
+    color: white;
+    width: 70%;
+    padding: 30px;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+}
+
+.login-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120%;
+    height: 200%;
+    z-index: -1;
+    background-color: inherit;
+    transform: skew(-30deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+}
+
+.login-title {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+
+.login-form {
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form elements */
+.form-control {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    /* margin: 10px  */
+}
+
+.form-control > input{
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+
+.login-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #F04A46;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.login-img {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    right: 0;
+}

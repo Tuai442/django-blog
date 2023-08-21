@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+
+    <div class="categories-container">
+        <h2 class="color-heading">Categories</h2>
+        <ul class="cooking-categories">
+            {% for category in cooking_categories %}
+                <li><a href="{% url 'home' category.id %}">{{ category }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="recepi-container">
+
+        {% for recipe in cooking_recepies %}
+           <div class="recepi">  
+                {% if recipe.image %}
+                    <img class="recipe-image-preview" src="{{ recipe.image.url }}" alt="">
+                {% else %}
+                    <img class="recipe-image-preview" src="{% static 'images/default_img.png' %}" alt="">
+                {% endif %}
+                
+                <h2 class="recipe-title">{{ recipe.title }}</h2>
+                <p>{{ recipe.description }}</p>
+                
+                <div class="recipe-bottom">
+                    
+                    <input class="button recipe-btn" value="read more" type="button"
+                           id="read-more-btn" data-recipe-id="{{ recipe.id }}"/>
+
+                    
+                    <!-- <a class="button recipe-btn" data-recipe-id="{{ recepie.id }}" href="">
+                        Read More
+                    </a> -->
+
+                    <div class="like-container">
+                        {{recipe.likes.count}}
+                        <img class="like-icon" src="{% static 'images/heart.png' %}" 
+                             data-recipe-id="{{ recepie.id }}" alt="">
+                    </div>
+                </div>
+           </div>
+        {% endfor %}
+
+        <script>
+            $(document).ready(function () {
+                $(".like-icon").click(function () {
+                    var recipeId = $(this).data("recipe-id");
+                    var iconElement = $(this); // Store the icon element to update class
+            
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'toggle-like' %}",  // Replace with your URL for liking a recipe
+                        data: {
+                            'recipe_id': recipeId,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        success: function () {
+                            // Handle success, such as updating the UI to reflect the like
+                            iconElement.addClass("liked");
+            
+                            // Reload the page after the like/unlike action
+                            location.reload();
+                        }
+                    });
+                });
+
+                $("#read-more-btn").click(function () {
+                    var recipeId = $(this).data("recipe-id");
+    window.location.href = "{% url 'recipe_details' %}?recipe_id=" + recipeId;
+                });
+            
+                    
+               
+            });
+        </script>
+            
+    </div>
+
+</div>
+
+{% endblock %}
+

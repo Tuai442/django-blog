@@ -1,0 +1,96 @@
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.color-heading{
+    color: #F04A46;
+}
+
+.categories-container{
+    width: 20%;
+    padding: 10px;
+
+}
+
+.categories-container > ul {
+    list-style-type: none;
+    margin: 5px;
+}
+
+.categories-container > ul > li > a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.categories-container > ul > li:hover{
+    cursor: pointer;
+}
+
+.recepi-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 10px;
+    overflow: auto;
+
+}
+
+.recepi-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 10px;
+    overflow: auto;
+}
+
+.recepi{
+    position: relative; /* Add this */
+    width: 400px;
+    height: 350px;
+    border: 1px solid #959595;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+
+
+.recipe-title{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: 80%;
+}
+
+.recipe-image-preview{
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.like-container{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    align-items: center;
+}
+
+.like-icon{
+    color: #F04A46;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.recipe-bottom{
+    position: absolute; /* Add this */
+    bottom: 0;
+    width: 100%; /* Add this */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: rgb(21, 45, 140); */
+    align-items: center;
+}

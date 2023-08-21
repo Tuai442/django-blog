@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper-details">
+    <div class="details-container">
+        <img class="recipe-image icon-btn" src="{% static 'images/ep_back.png' %}" alt="">
+        <script>
+            $(".recipe-image").click(function () {
+                window.history.back();
+            });
+        </script>
+
+        <div class="recipe-details">
+            <div class="left-container">
+                {% if recipe.image %}
+                    <img class="recipe-image-details" src="{{ recipe.image.url }}" alt="">
+                {% else %}
+                    <img class="recipe-image-details" src="{% static 'images/default_img.png' %}" alt="">
+                {% endif %}
+                <h2>Ingridients</h2>
+                {% for ingridient in recipe.ingridients.all %}
+                    <p>{{ ingridient }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="details-1">
+                <h2>{{ recipe.title }}</h2>
+                <p>{{ recipe.description }}</p>
+               
+                <h3>Instructions</h3>
+                <p>{{ recipe.instructions }}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
